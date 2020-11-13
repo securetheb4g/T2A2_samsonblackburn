@@ -244,7 +244,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   cloudinary (~> 1.18)
   devise (~> 4.7)
-  dotenv-rails (~> 2.7)
+  dotenv-rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)

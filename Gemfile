@@ -5,8 +5,9 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+
+gem "dotenv-rails", require: "dotenv/rails-now"
 #DOTENV File put above postgres to solve authentication problems
-gem "dotenv-rails", "~> 2.7"
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
