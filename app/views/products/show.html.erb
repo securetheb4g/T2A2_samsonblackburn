@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Image:</strong>
+  <%= cl_image_tag(@product.image.key, cloud_name: 'dpwztry10', :quality=>100, :width=>300, :crop=>"scale") %>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
