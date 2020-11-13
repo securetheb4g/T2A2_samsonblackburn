@@ -2,7 +2,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= cl_image_tag(@product.image.key, cloud_name: "dpwztry10", :quality=>100, :width=>300, :crop=>"scale") %>
+  <%= cl_image_tag(@product.image.key, cloud_name: "dpwztry10", :width=>300, :crop=>"scale") %>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
@@ -12,5 +12,5 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Edit', edit_product_path(@product) %>
 <%= link_to 'Back', products_path %>
