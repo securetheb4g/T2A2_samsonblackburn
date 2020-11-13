@@ -35,6 +35,6 @@ local:
 
 cloudinary:
   service: Cloudinary
-  cloud_name: dpwztry10
-  api_key: 677947788537625
-  api_secret: xkePo-30FRmUiUmWoQ0ZcGzn-o4
+  cloud_name: ENV["CLOUDINARY_CLOUDNAME"]
+  api_key: ENV["CLOUDINARY_APIKEY"]
+  api_secret: ENV["CLOUDINARY_SECRET"]
