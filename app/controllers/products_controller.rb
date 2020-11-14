@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:buy]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
 
   # GET /products
   # GET /products.json
@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
           price_data: {
             currency: 'aud',
             product_data: {
-              name: 'Donabe'
+              name: @product.name
             },
-            unit_amount: 300
+            unit_amount: (@product.price * 100).to_i
           },
           quantity: 1
         }
@@ -35,6 +35,14 @@ class ProductsController < ApplicationController
     })
 
     render json: session
+  end
+
+  def success
+    render plain: "Success!" 
+  end
+
+  def cancel
+    render plain: "The transaction was cancelled!"
   end
   # GET /products/new
   def new
