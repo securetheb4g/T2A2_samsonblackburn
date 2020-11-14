@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  # skip_before_action: :verify_authenticity_token, only: [:buy]
+  skip_before_action :verify_authenticity_token, only: [:buy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -12,7 +12,30 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
   end
+  
+  def buy
+    Stripe.api_key = ENV['STRIPE_API_KEY']
+    session = Stripe::Checkout::Session.create({
+      payment_method_types: ['card'],
+      mode: 'payment',
+      success_url: success_url(params[:id]),
+      cancel_url: cancel_url(params[:id]),
+      line_items: [
+        {
+          price_data: {
+            currency: 'aud',
+            product_data: {
+              name: 'Donabe'
+            },
+            unit_amount: 300
+          },
+          quantity: 1
+        }
+      ]
+    })
 
+    render json: session
+  end
   # GET /products/new
   def new
     @product = Product.new
@@ -68,29 +91,6 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def buy
-      Stripe.api_key = ENV['STRIPE_API_KEY']
-      session = Stripe::Checkout::Session.create({
-        payment_method_types: ['card'],
-        mode: 'payment',
-        success_url: success_url(params[:id]),
-        cancel_url: cancel_url(params[:id]),
-        line_items: [
-          {
-            price_data: {
-              currency: 'aud',
-              product_data: {
-                name: 'Donabe'
-              },
-              unit_amount: 300
-            },
-            quantity: 1
-          }
-        ]
-      })
-
-      render json: session
-    end
 
     # Only allow a list of trusted parameters through.
     def product_params
