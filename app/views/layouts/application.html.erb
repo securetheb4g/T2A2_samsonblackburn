@@ -14,6 +14,9 @@
 
   </nav>
   <body>
+    <main class='<%=controller.controller_name %>'>
+    <%= yield %>
+    </main>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
@@ -28,6 +31,6 @@
       <%= link_to 'Register', new_user_registration_path, method: :get %>
       </h4>
     <% end %>
-    <%= yield %>
+    <% yield %>
   </body>
 </html>
