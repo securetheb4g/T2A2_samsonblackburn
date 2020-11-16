@@ -65,4 +65,5 @@ gem "activestorage-cloudinary-service", "~> 0.2.3"
 
 gem 'bootstrap', '~> 4.5.3'
 gem 'sassc-rails'
+gem 'jquery-rails'
 gem "stripe", "~> 5.28"
