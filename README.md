@@ -1,6 +1,7 @@
 # README
 
 //R7 Identify the problem you are trying to solve:
+#####Why is it a problem that needs solving?
 
 In Australia it is difficult to find high quality cooking equipment, most equipment has been cheaply made in China and imported from the same sources. This application seeks to bring Japanese Donabes and consumer together. This high quality traditional cooking equipment is hand made in Japan.
 
@@ -20,6 +21,8 @@ The purpose of this application is to bring artisan cooking equipment to an easy
 Functionality / features
 This website stores information in a Postrgresql database, Users are able to sign up, sign in and sign out of the application. There is a central page for the users to browse the products and implementation of Stripe to allow user purchases. The website uses Rolify to distinguish between users and Devise to process the authentication.
 
+##########Userlogin, Crud, emailing
+
 Sitemap
 
 Screenshots
@@ -35,6 +38,8 @@ Cloudinary has been used for image hosting and scaling.
 
 //R12 User stories for this app
 
+#############Format: As a user I want a feature so that I can benefit
+
 The use cases for this application are simple. 
 There are two different roles: A user and an Admin. 
 
@@ -47,6 +52,8 @@ As an admin I want to be able to see, update and delete Donabe listings, I also 
 //R14 An ERD for this app
 
 //R15 Explain the different high-level components(abstractions) in this app
+
+#######Discuss MVC Routes etc ####More specific than the workbook question as it needs to relate to the app
 
 This is an MVC Application which means it practices separation of concerns between a Model, View and controller. 
 
@@ -67,6 +74,8 @@ Controllers: The controllers orchestrate the application. They receive the event
 
 //R16 Detail any third party services the app will use
 
+######Talk about the important gems Devise describe what it is, Bootstrap, Rolify
+
 This application uses the following third party services:
 
 Heroku
@@ -82,13 +91,23 @@ Boost Note
 Balsamiq
 
 //R17 Describe this projects models in terms of the relationships(active record associations) they have with each other
+########You dont say user has many posts you tell what many to many or has many means
+########If you have one tell him why you have it and need it
+########Do users have posts? Do users have roles?  One role? Many roles?
+
+###User stories are not feature 1 feature 2 fature 3
+
+#####as a user I want a feature so that I can benefit
+#####These user stories exist so that you know what to code
 
 Roles.rb User.rb and Product.rb all inherit from ApplicationRecord. 
 Application record inherits from ActiveRecord Base.
 
 //R18 Discuss the database relations to be implemented in the application
+####This is about the actual database, What is the purpose of the foreign keys why dont we extract them from a table, how are we getting the information
 
 //R19 Provide database schema design
+####Do an ERD talk about it you can copy post your schema it doesnt matter as logn as you represent the database
 
 //R20 Describe the way tasks are allocated and tracked in the project
 
