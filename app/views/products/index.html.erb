@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
+<h1>The Collection</h1>
 <table>
   <thead>
     <tr>
@@ -16,10 +14,13 @@
       <tr class= "<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= product.name %></td>
         <td><%= product.price %></td>
-        <% if user_signed_in? %>
+        <td><%= image_tag(product.image) %></td>
+        <% if user_signed_in? && current_user.has_role?(:admin) %>
           <td><%= link_to 'Show', product %></td>
           <td><%= link_to 'Edit', edit_product_path(product) %></td>
           <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+          <td><%= link_to 'Show', product %></td>
         <% end %>
       </tr>
     <% end %>

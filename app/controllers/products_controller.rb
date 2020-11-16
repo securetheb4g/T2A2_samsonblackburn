@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:buy]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
+  before_action :authenticate_user!
+  # before_action :check_roles
+  
 
   # GET /products
   # GET /products.json
@@ -36,13 +39,13 @@ class ProductsController < ApplicationController
 
     render json: session
   end
-
+  #If a user purchases an item it renders a success message
   def success
-    render plain: "Success!" 
+    render plain: "Your order has been placed." 
   end
-
+  #If a user cancels their order it returns them to the home page
   def cancel
-    render plain: "The transaction was cancelled!"
+    redirect_to root_path
   end
   # GET /products/new
   def new
@@ -99,6 +102,12 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    # def check_roles
+    #   if !current_user.has_role?(:admin)
+    #     flash[:alert] = "You aren't allowed to be here you cheeky devil!"
+    #     redirect_to root_path
+    #   end
+    # end
 
     # Only allow a list of trusted parameters through.
     def product_params
