@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
-#This Gem puts the 
+#This Gem is handling credential security
 gem "dotenv-rails", require: "dotenv/rails-now"
 #DOTENV File put above postgres to solve authentication problems
 # Use postgresql as the database for Active Record
@@ -55,15 +55,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-#CUSTOM GEMS - most customer gems are below here
+#CUSTOM GEMS - most custom gems are below here
+#This gem is handling user authentication it has been customised from standard
 gem "devise", "~> 4.7"
-
+#This gem is handling user roles
 gem "rolify", "~> 5.3"
-
+#This Gem is handling fileuploads
 gem "cloudinary", "~> 1.18"
 gem "activestorage-cloudinary-service", "~> 0.2.3"
-
+#To Test this application for vulnerabilities please run brakeman
+gem 'brakeman'
 gem 'bootstrap', '~> 4.5.3'
 gem 'sassc-rails'
 gem 'jquery-rails'
+#This Gem is handling payment through Stripe
 gem "stripe", "~> 5.28"
