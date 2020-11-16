@@ -13,7 +13,7 @@
     <% @products.each do |product| %>
       <tr class= "<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price) %></td>
         <td><%= image_tag(product.image) %></td>
         <% if user_signed_in? && current_user.has_role?(:admin) %>
           <td><%= link_to 'Show', product %></td>

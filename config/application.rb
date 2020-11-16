@@ -1,7 +1,8 @@
 require_relative 'boot'
 
 require 'rails/all'
-
+#This is to prevent session hijacking as per https://guides.rubyonrails.org/security.html
+config.force_ssl = true
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
