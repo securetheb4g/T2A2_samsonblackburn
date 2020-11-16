@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:buy]
   before_action :set_product, only: [:show, :edit, :update, :destroy, :buy]
   before_action :authenticate_user!
+  rescue_from ActiveModel::RangeError, with: :invalidity
+  rescue_from ActiveRecord::RecordNotFound, with: :invalidity
   # before_action :check_roles
   
 
@@ -102,12 +104,17 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def invalidity
+      logger.error "Attempted an invalid action"
+      redirect_to root_path, notice: "Invalid Data Entry"
+    end
     # def check_roles
     #   if !current_user.has_role?(:admin)
     #     flash[:alert] = "You aren't allowed to be here you cheeky devil!"
     #     redirect_to root_path
     #   end
     # end
+
 
     # Only allow a list of trusted parameters through.
     def product_params
