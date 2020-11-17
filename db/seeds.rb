@@ -23,7 +23,7 @@ product1.image.attach(
 )
 product1.save
 
-product2 = Product.new!(name: "Donabe Multipurpose" , price: 250, user_id: user.id)
+product2 = Product.new(name: "Donabe Multipurpose" , price: 250, user_id: user.id)
 product2.image.attach(
     io: File.open(Rails.root.join("app", "assets", "images", "DonabeMultipurpose.jpg")), 
     filename: 'Donabesmoker.jpg',
@@ -31,7 +31,7 @@ product2.image.attach(
 )
 product2.save
 
-product3 = Product.create!(name: "Donabe Mustard" , price: 130, user_id: user.id)
+product3 = Product.new(name: "Donabe Mustard" , price: 130, user_id: user.id)
 product3.image.attach(
     io: File.open(Rails.root.join("app", "assets", "images", "Donabemustard.jpg")), 
     filename: 'Donabesmoker.jpg',
