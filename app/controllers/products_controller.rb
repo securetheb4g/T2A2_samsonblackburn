@@ -103,7 +103,7 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
-
+#Prevents entering malicious number of integers
     def invalidity
       logger.error "Attempted an invalid action"
       redirect_to root_path, notice: "Invalid Data Entry"
