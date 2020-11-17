@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :products, dependent: :destroy
   rolify :role_cname => 'Roles'
   after_create :assign_default_role
   validates :email, uniqueness: true

@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+    belongs_to :user
     has_one_attached :image, dependent: :purge
     #The below lines of code validate the entry of data and attempt to prevent intrusive data entry
     validates :name, :image, presence: true

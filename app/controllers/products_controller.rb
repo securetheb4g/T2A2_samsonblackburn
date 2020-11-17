@@ -43,7 +43,6 @@ class ProductsController < ApplicationController
   end
   #If a user purchases an item it renders a success message
   def success
-    render plain: "Your order has been placed." 
   end
   #If a user cancels their order it returns them to the home page
   def cancel
@@ -62,7 +61,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @product.user_id = current_user.id
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

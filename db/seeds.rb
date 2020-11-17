@@ -6,3 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+User.destroy_all
+
+User.create!(email: "admin@test", password: "password")
+User.first.add_role(:admin)
+
+user = User.create!(email: "user@test", password: "password")
+
+Product.destroy_all
+product1 = Product.create!(name: "Donabe Smoker" , price: 200, user_id: user.id)
+product2 = Product.create!(name: "Donabe Multipurpose" , price: 250, user_id: user.id)
+product3 = Product.create!(name: "Donabe Mustard" , price: 130, user_id: user.id)
+
+puts "users created: #{User.count}"
+puts "products created: #{Product.count}"
+
+product1.image.attach(
+    io: File.open(Rails.root.join("app", "assets", "images", "Donabesmoker.jpg")), 
+    filename: 'Donabesmoker.jpg',
+    content_type: "image/jpg"
+)
+product2.image.attach(
+    io: File.open(Rails.root.join("app", "assets", "images", "DonabeMultipurpose.jpg")), 
+    filename: 'Donabesmoker.jpg',
+    content_type: "image/jpg"
+)
+product3.image.attach(
+    io: File.open(Rails.root.join("app", "assets", "images", "Donabemustard.jpg")), 
+    filename: 'Donabesmoker.jpg',
+    content_type: "image/jpg"
+)
