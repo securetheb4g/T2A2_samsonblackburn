@@ -70,3 +70,5 @@ gem 'sassc-rails'
 gem 'jquery-rails'
 #This Gem is handling payment through Stripe
 gem "stripe", "~> 5.28"
+#ERD extraction
+gem 'rails-erd'
